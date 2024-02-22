@@ -1,3 +1,7 @@
+# Markdown example post
+
+This is just an new blog post.
+
 # New notice
 ## New notice2
 ## New Notce3
