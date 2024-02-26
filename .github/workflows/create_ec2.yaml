@@ -4,12 +4,12 @@
       aws_access_key_id:
         description: 'Input key id'
         required: true
-        type: choice
+        type: string
         default: "NULL"
       aws_secret_access_key:
         description: 'Input secret key'
         required: true
-        type: choice
+        type: string
         default: "NULL"
 
 jobs:
