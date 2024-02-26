@@ -1,7 +1,6 @@
 name: Create Lab Machine
 
 on:
-
   workflow_dispatch:
     inputs:
       aws_access_key_id:
@@ -38,4 +37,3 @@ jobs:
           terraform validate
           terraform plan
           terraform apply -auto-approve
-  
