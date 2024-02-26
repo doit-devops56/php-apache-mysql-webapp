@@ -87,6 +87,14 @@ resource "aws_instance" "mern-instance" {
 
   tags = {
     Name    = "mern-instance-main"
+  instance_type = "t2.micro"
+
+  subnet_id              = [for s in data.aws_subnet.default : s.id][0]
+  vpc_security_group_ids = data.aws_security_groups.test.ids
+
+
+  tags = {
+    Name    = "mern-instance"
     Project = "devops"
   }
 
@@ -112,8 +120,12 @@ output "private_ip" {
 
 output "subnet_cidr_blocks" {
   value = [for s in data.aws_subnet.default : s.id]
-<<<<<<< HEAD
 }
-=======
 }
->>>>>>> abee28f (hi i am here)
+output "aws_security_group" {
+  value = data.aws_security_groups.test.ids
+}
+
+output "subnet_cidr_blocks" {
+  value = [for s in data.aws_subnet.default : s.id]
+}

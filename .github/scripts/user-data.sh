@@ -21,8 +21,6 @@ sudo usermod -aG docker ubuntu
 sed -i 's/^PasswordAuthentication\s*no/PasswordAuthentication yes/' /etc/ssh/sshd_config
 systemctl restart sshd
 
-<<<<<<< HEAD
 echo -e "changeme\nchangeme" | sudo -S passwd ubuntu
-=======
 echo -e "changeme\nchangeme" | sudo -S passwd ubuntu
->>>>>>> abee28f (hi i am here)
+echo -e "changeme\nchangeme" | sudo -S passwd ubuntu
