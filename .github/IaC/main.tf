@@ -1,8 +1,4 @@
 data "aws_vpc" "default" {
-<<<<<<< HEAD
- b2788ca ( new cicd pipeline from pradip)
-=======
->>>>>>> e093919f3e8908394cb8a25b7926ea7cea5a5362
   default = true
 }
 
