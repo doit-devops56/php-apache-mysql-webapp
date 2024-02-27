@@ -60,7 +60,7 @@ resource "aws_instance" "mern-instance" {
 
 
   tags = {
-    Name    = "mern-instance"
+    Name    = "php-instance-dubesh"
     Project = "devops"
   }
 
