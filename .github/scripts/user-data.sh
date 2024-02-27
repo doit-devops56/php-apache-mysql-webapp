@@ -1,8 +1,4 @@
 #!/bin/bash
-<<<<<<< HEAD
-b2788ca ( new cicd pipeline from pradip)
-=======
->>>>>>> e093919f3e8908394cb8a25b7926ea7cea5a5362
 # Add Docker's official GPG key:
 sudo apt-get update
 sudo apt-get install -y ca-certificates curl
