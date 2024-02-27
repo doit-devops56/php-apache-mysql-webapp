@@ -1,3 +1,4 @@
+#!/usr/bin/expect -f
 set timeout 120
 set host [lindex $argv 0]
 send_user "host: $host\n"
@@ -9,4 +10,3 @@ send -- "changeme\r"
 # sleep 10
 # send -- "exit\r"
 expect eof
-
