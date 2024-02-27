@@ -26,10 +26,10 @@ jobs:
       - name: upload docker images
         run: |
           docker images
-          docker tag php_apache_mysql:latest dpaktamang/php_apache_mysql:latest
+          docker tag php_apache_mysql:latest dubesh/php_apache_mysql:latest
 
           # push
-          docker push dpaktamang/php_apache_mysql:latest
+          docker push dubesh/php_apache_mysql:latest
   deploy:
     runs-on: ubuntu-latest
     environment: ${{ github.ref_name }}
