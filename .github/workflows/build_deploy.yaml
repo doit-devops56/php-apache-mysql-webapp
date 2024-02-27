@@ -56,10 +56,13 @@ jobs:
       - name: create ec2 instance
         working-directory: .github/IaC
         run: |
-          terraform init
-          terraform validate
-          terraform plan
-          terraform apply -auto-approve
+          public_ip=$(aws ec2 describe-instances --filters "Name=tag-value,Values=php-instance-main" --query "Reservations[*].Instances[*].PublicIpAddress" --output text)
+          if [ -z $public_ip ]; then
+            terraform init
+            terraform validate
+            terraform plan
+            terraform apply -auto-approve
+          fi
    
       - name: update php app
         working-directory: .github/scripts
