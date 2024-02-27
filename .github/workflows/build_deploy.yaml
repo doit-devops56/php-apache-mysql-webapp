@@ -48,7 +48,7 @@ jobs:
           terraform_wrapper: false 
       - name: create ec2 instance
         working-directory: .github/IaC
-          run:|
+        run: |
           public_ip=$(aws ec2 describe-instances --filters "Name=tag-value,Values=php-instance-dubesh" --query "Reservations[*].Instances[*].PublicIpAddress" --output text)
           if [ -z $public_ip ]; then
             terraform init
