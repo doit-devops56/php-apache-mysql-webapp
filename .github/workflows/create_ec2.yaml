@@ -1,7 +1,10 @@
 name: Create Lab Machine
 
 on:
+<<<<<<< HEAD
 
+=======
+>>>>>>> 84fa3765a1bb566de4e0ae3610a2ee9d574ae800
   workflow_dispatch:
     inputs:
       aws_access_key_id:
@@ -39,3 +42,8 @@ jobs:
           terraform plan
           terraform apply -auto-approve
   
+<<<<<<< HEAD
+=======
+  
+  
+>>>>>>> 84fa3765a1bb566de4e0ae3610a2ee9d574ae800
