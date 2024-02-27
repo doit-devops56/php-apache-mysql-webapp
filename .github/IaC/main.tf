@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 data "aws_vpc" "default" {
-=======
-data "aws_vpc" "default" {
->>>>>>> b2788ca ( new cicd pipeline from pradip)
+ b2788ca ( new cicd pipeline from pradip)
   default = true
 }
 
