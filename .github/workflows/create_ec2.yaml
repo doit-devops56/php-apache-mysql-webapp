@@ -1,17 +1,21 @@
+<<<<<<< HEAD
+
+=======
 name: Create Lab Machine
 
 on:
+>>>>>>> e093919f3e8908394cb8a25b7926ea7cea5a5362
   workflow_dispatch:
     inputs:
       aws_access_key_id:
         description: 'Input key id'
         required: true
-        type: choice
+        type: string
         default: "NULL"
       aws_secret_access_key:
         description: 'Input secret key'
         required: true
-        type: choice
+        type: string
         default: "NULL"
 
 jobs:
@@ -40,4 +44,10 @@ jobs:
   
   
   
+<<<<<<< HEAD
+
    
+
+=======
+   
+>>>>>>> e093919f3e8908394cb8a25b7926ea7cea5a5362
