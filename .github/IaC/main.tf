@@ -112,4 +112,8 @@ output "private_ip" {
 
 output "subnet_cidr_blocks" {
   value = [for s in data.aws_subnet.default : s.id]
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> abee28f (hi i am here)
