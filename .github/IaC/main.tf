@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 8eb7e9c4ba84ddaa319da4c90186d786c54fd2f4
 data "aws_vpc" "default" {
   default = true
 }
@@ -57,18 +53,16 @@ data "aws_ami" "ubuntu" {
 
 resource "aws_instance" "mern-instance" {
   ami           = data.aws_ami.ubuntu.id
-  instance_type = "t2.micro"
+  instance_type = "t2.medium"
 
   subnet_id              = [for s in data.aws_subnet.default : s.id][0]
   vpc_security_group_ids = data.aws_security_groups.test.ids
 
 
   tags = {
-<<<<<<< HEAD
     Name    = "mern-instance-branch_kapila"
-=======
-    Name    = "mern-instance"
->>>>>>> 8eb7e9c4ba84ddaa319da4c90186d786c54fd2f4
+
+
     Project = "devops"
   }
 
@@ -89,8 +83,6 @@ output "aws_security_group" {
 
 output "subnet_cidr_blocks" {
   value = [for s in data.aws_subnet.default : s.id]
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> 8eb7e9c4ba84ddaa319da4c90186d786c54fd2f4
+
