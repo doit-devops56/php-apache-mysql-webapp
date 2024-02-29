@@ -18,11 +18,36 @@ output "aws_vpc_id" {
   value = data.aws_vpc.default.id
 }
 
-data "aws_security_groups" "test" {
+#data "aws_security_groups" "test" {
+#
+#  filter {
+#    name   = "vpc-id"
+#    values = [data.aws_vpc.default.id]
+#  }
+#}
 
-  filter {
-    name   = "vpc-id"
-    values = [data.aws_vpc.default.id]
+resource "aws_security_group" "devops_sg" {
+  name        = "devops_sg"
+  vpc_id      = data.aws_vpc.default.id
+
+  ingress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  tags = {
+    Name = "devops_sg"
   }
 }
 
@@ -56,7 +81,8 @@ resource "aws_instance" "mern-instance" {
   instance_type = "t2.medium"
 
   subnet_id              = [for s in data.aws_subnet.default : s.id][0]
-  vpc_security_group_ids = data.aws_security_groups.test.ids
+  #vpc_security_group_ids = data.aws_security_groups.test.ids
+  vpc_security_group_ids = [aws_security_group.devops_sg.id]
 
 
   tags = {
@@ -67,6 +93,10 @@ resource "aws_instance" "mern-instance" {
   }
 
   user_data = data.template_file.user_data.rendered
+  root_block_device {
+    volume_size = 30
+  }
+  
 }
 
 output "public_ip" {
