@@ -22,3 +22,7 @@ sed -i 's/^PasswordAuthentication\s*no/PasswordAuthentication yes/' /etc/ssh/ssh
 systemctl restart sshd
 
 echo -e "changeme\nchangeme" | sudo -S passwd ubuntu
+
+
+
+
