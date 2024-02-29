@@ -11,7 +11,6 @@ on:
         description: 'Input key id'
         required: true
         type: string
-        type: choice
         default: "NULL"
       aws_secret_access_key:
         description: 'Input secret key'
