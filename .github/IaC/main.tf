@@ -107,9 +107,9 @@ output "private_ip" {
 }
 
 
-output "aws_security_group" {
-  value = data.aws_security_groups.test.ids
-}
+# output "aws_security_group" {
+ #  value = data.aws_security_groups.test.ids
+#}
 
 output "subnet_cidr_blocks" {
   value = [for s in data.aws_subnet.default : s.id]
