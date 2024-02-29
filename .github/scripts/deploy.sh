@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 #!/usr/bin/expect -f
+=======
+<<<<<<< HEAD
+#!/usr/bin/expect -f
+=======
+#!/usr/bin/expect -f
+>>>>>>> 8eb7e9c4ba84ddaa319da4c90186d786c54fd2f4
+>>>>>>> b02a0235e37233ca3793a1ef386bdd2bebc19620
 set timeout 120
 set host [lindex $argv 0]
 send_user "host: $host\n"
@@ -9,4 +17,11 @@ send -- "changeme\r"
 # send -- "ls /\r"
 # sleep 10
 # send -- "exit\r"
+<<<<<<< HEAD
 expect eof
+<<<<<<< HEAD
+=======
+=======
+expect eof
+>>>>>>> 8eb7e9c4ba84ddaa319da4c90186d786c54fd2f4
+>>>>>>> b02a0235e37233ca3793a1ef386bdd2bebc19620

@@ -43,5 +43,8 @@ jobs:
           terraform apply -auto-approve
   
   
+<<<<<<< HEAD
   
    
+=======
+>>>>>>> b02a0235e37233ca3793a1ef386bdd2bebc19620
