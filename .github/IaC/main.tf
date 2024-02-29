@@ -26,6 +26,7 @@ data "aws_security_groups" "test" {
   }
 }
 
+<<<<<<< HEAD
 #resource "aws_security_group" "devops_sg" {
 #  name        = "devops_sg"
 #  vpc_id      = data.aws_vpc.default.id
@@ -87,6 +88,14 @@ resource "aws_instance" "mern-instance" {
 
   tags = {
     Name    = "mern-instance-branch_kapila"
+  instance_type = "t2.micro"
+
+  subnet_id              = [for s in data.aws_subnet.default : s.id][0]
+  vpc_security_group_ids = data.aws_security_groups.test.ids
+
+
+  tags = {
+    Name    = "mern-instance"
     Project = "devops"
   }
 
@@ -95,7 +104,6 @@ resource "aws_instance" "mern-instance" {
     volume_size = 30
   }
   
-}
 
 output "public_ip" {
   value = aws_instance.mern-instance.public_ip
@@ -109,6 +117,13 @@ output "private_ip" {
  
 #value = data.aws_security_groups.test.ids
 #}
+
+output "subnet_cidr_blocks" {
+  value = [for s in data.aws_subnet.default : s.id]
+}
+output "aws_security_group" {
+  value = data.aws_security_groups.test.ids
+}
 
 output "subnet_cidr_blocks" {
   value = [for s in data.aws_subnet.default : s.id]
