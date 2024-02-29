@@ -86,7 +86,7 @@ resource "aws_instance" "mern-instance" {
 
 
   tags = {
-    Name    = "mern-instance-main"
+    Name    = "mern-instance-branch_kapila"
     Project = "devops"
   }
 
