@@ -71,9 +71,9 @@ data "aws_ami" "ubuntu" {
 }
 
 
- locals {
-   parsed_security_groups = split(" ", var.vpc_security_group_ids)
- }
+# locals {
+#   parsed_security_groups = split(" ", var.vpc_security_group_ids)
+# }
 
 
 resource "aws_instance" "mern-instance" {
