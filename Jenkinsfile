@@ -1,68 +1,51 @@
 pipeline {
-    agent {
-        any
-    }
+    agent any
     
-   
     environment {
-        MYAPP_VER="1.0.0"
-        
+        MYAPP_VER = "1.0.0"
     }
 
     parameters {
         booleanParam(name: "build_php", defaultValue: false)
-       
     }
 
-
     stages {
-        // Non-parallel Stage
         stage('Build docker images') {
-            
             steps {
                 script {
-                    //Extracting Jenkins branch to use in sonar.property
                     echo '#### Starting docker build....'
-                    
+                    // Add steps for building Docker images
                 }
             }
         }
 
         stage('Push docker images') {
-        
             environment {
                 DOCKERHUB_URL = "docker/test"
             }
-
             steps {
                 script {
-                    //Extracting Jenkins branch to use in sonar.property
                     echo 'Pushing docker images to docker hub...'
-                    
-                    }
+                    // Add steps for pushing Docker images
                 }
             }
-        
-        
-     stage('Deploy app'){
-                                             
-                            steps {
-                                    sh'''
-                                    echo "Deploying app..."
-                                    '''
-                            }
-                        }
+        }
 
+        stage('Deploy app') {
+            steps {
+                sh '''
+                echo "Deploying app..."
+                '''
+                // Add steps for deploying the app
+            }
+        }
+    }
     
-    
-    
-}
     post {
         always {
-           sh '''
-             echo "Sending email notification..."
-           '''
+            sh '''
+            echo "Sending email notification..."
+            '''
         }
     }
 }
-
