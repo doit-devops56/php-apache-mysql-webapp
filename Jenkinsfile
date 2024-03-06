@@ -42,7 +42,7 @@ pipeline {
                     }
                 }
             }
-        }
+        
         
      stage('Deploy app'){
                                              
@@ -54,8 +54,9 @@ pipeline {
                         }
 
     
-    }
     
+    
+}
     post {
         always {
            sh '''
@@ -64,3 +65,4 @@ pipeline {
         }
     }
 }
+
