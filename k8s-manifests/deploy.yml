@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myphpblog-deployment
+  labels:
+    app: php-blog
+spec:
+  selector:
+    matchLabels:
+      app: php-blog
+  template:
+    metadata:
+      labels:
+        app: php-blog
+    spec:
+      containers:
+        - name: git-sync
+          image: k8s.gcr.io/git-sync:v3.1.3
+          volumeMounts:
+            - name: www-data
+              mountPath: /data
+          env:
+            - name: GIT_SYNC_REPO
+              value: "https://github.com/doit-devops56/php-apache-mysql-webapp.git" ##repo-path-you-want-to-clone
+            - name: GIT_SYNC_BRANCH
+              value: "main" ##repo-branch
+            - name: GIT_SYNC_ROOT
+              value: /data
+            - name: GIT_SYNC_DEST
+              value: "hello" ##path-where-you-want-to-clone
+            - name: GIT_SYNC_PERIOD
+              value: "20"
+            - name: GIT_SYNC_ONE_TIME
+              value: "false"
+          securityContext:
+            runAsUser: 0
+        - name: php-blog-helloworld
+          image: ibcdevops/php-blog:latest
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - mountPath: "/var/www/html"
+              name: www-data
+      volumes:
+        - name: www-data
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+spec:
+  selector:
+    app: php-blog
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
